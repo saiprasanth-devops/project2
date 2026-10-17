@@ -97,7 +97,7 @@ fi
 }
 
 #for app in "${APPNAME[@]}"
-for app in $APPNAME
+for app in "$APPNAME"
 do
 echo "$app"
 # packagename=$("echo $app")
