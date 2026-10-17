@@ -101,7 +101,7 @@ do
 echo "$app"
 # packagename=$("echo $app")
 packagename=$app
-echo ("$packagename")
+echo ""$packagename""
 
 validate_status
 if [ "$packagename" = "mongodb-org" ];
