@@ -105,7 +105,7 @@ packagename=$app
 echo ""$packagename""
 
 validate_status
-if [ "$packagename" = "mongodb-org" ];
+if [ "$packagename" = "[mongodb-org]" ];
 then
 checkversion "$packagename"
 mongodb_setup "$packagename"
