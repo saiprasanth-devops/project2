@@ -65,8 +65,8 @@ fi
 
 mongodb_setup(){
     packagename=$1
-dnf list installed "$packagename"
-validate_status
+#dnf list installed "$packagename"
+#validate_status
 
 # dnf search "$packagename" | grep "No matches found."
 
@@ -88,7 +88,7 @@ checkversion(){
 packagename=$1
 
 mongod --version
-versionstatuscode=$(echo $?)
+versionstatuscode=$(echo $?)     
 if [ "$versionstatuscode" -ne 0 ];
 then
 echo ""$packagename" is not installed so proceed"   >> "$logfilefullname"
