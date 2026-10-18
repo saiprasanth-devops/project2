@@ -49,14 +49,11 @@ validate_status
 # status=$(echo $?)  
 # echo "$status"
 change_address(){
-
 if [ -f "$configfile" ];
 then 
-    echo ""$configadrchange""
-
-    ""$configadrchange""
-    validate_status
-
+echo ""$configadrchange""
+""$configadrchange""
+validate_status
 else
 echo ""$configfile" is not present in the location...hence exit"
 exit 1
