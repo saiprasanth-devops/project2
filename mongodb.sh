@@ -75,10 +75,13 @@ systemctl start mongod    >> "$logfilefullname"
 validate_status
 systemctl status mongod    >> "$logfilefullname"
 validate_status
+echo "change address"   | tee -a "$logfilefullname"
 change_address
 validate_status
+echo "restart mongod"   | tee -a "$logfilefullname"
 systemctl restart mongod  >> "$logfilefullname"
 validate_status
+echo "check netstat -lntp"   | tee -a "$logfilefullname"
 netstat -lntp | grep 27017   >> "$logfilefullname"
 validate_status  
 }
