@@ -69,6 +69,7 @@ mongodb_setup(){
 #validate_status
 
 # dnf search "$packagename" | grep "No matches found."
+dnf install "$packagename"   >> "$logfilefullname"
 
 systemctl enable "$packagename"   >> "$logfilefullname"
 validate_status
