@@ -51,8 +51,8 @@ validate_status
 change_address(){
 if [ -f "$configfile" ];
 then 
-echo ""$configadrchange""
-""$configadrchange""
+echo "$configadrchange"
+"$configadrchange"
 validate_status
 else
 echo ""$configfile" is not present in the location...hence exit"
