@@ -71,15 +71,15 @@ mongodb_setup(){
 # dnf search "$packagename" | grep "No matches found."
 dnf install "$packagename" -y  >> "$logfilefullname"
 
-systemctl enable "$packagename"   >> "$logfilefullname"
+systemctl enable mongod   >> "$logfilefullname"
 validate_status
-systemctl start "$packagename"    >> "$logfilefullname"
+systemctl start mongod    >> "$logfilefullname"
 validate_status
-systemctl status "$packagename"    >> "$logfilefullname"
+systemctl status mongod    >> "$logfilefullname"
 validate_status
 change_address
 validate_status
-systemctl restart "$packagename"  >> "$logfilefullname"
+systemctl restart mongod  >> "$logfilefullname"
 validate_status
 netstat -lntp | grep 27017   >> "$logfilefullname"
 validate_status  
