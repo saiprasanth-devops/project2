@@ -9,7 +9,7 @@ logfilename=$0
 configadrchange="sed -i 's/127.0.0.1/0.0.0.0/' "
 configfile="/etc/mongod.conf"
 appname="mongodb-org"
-checkgrep=("netstat" "-lntp" "|" "grep" "27017")
+checkgrep=("netstat" "-lntp")
 
 
 mkdir -p "$logsfolder"
@@ -83,7 +83,7 @@ echo "restart mongod"   | tee -a "$logfilefullname"
 systemctl restart mongod  >> "$logfilefullname"
 validate_status
 echo "check netstat -lntp"   | tee -a "$logfilefullname"
-"${checkgrep[$@]}"   >> "$logfilefullname"
+"${checkgrep[@]}" | grep "27017" >> "$logfilefullname"
 validate_status  
 }
 
