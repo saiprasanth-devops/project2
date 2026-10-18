@@ -5,7 +5,8 @@ foldername="/etc/yum.repos.d/"
 filename="mongo.repo"
 logsfolder="/home/ec2-user/cartservice2/project2/"
 logfilename=$0
-configadrchange="sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf"
+#configadrchange="sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf"
+configadrchange="sed -i 's/127.0.0.1/0.0.0.0/' "
 configfile="/etc/mongod.conf"
 appname="mongodb-org"
 
@@ -51,8 +52,8 @@ validate_status
 change_address(){
 if [ -f "$configfile" ];
 then 
-echo "$configadrchange"
-"$configadrchange"
+#echo "$configadrchange""$configfile"
+sed -i 's/127.0.0.1/0.0.0.0/' "$configfile"
 validate_status
 else
 echo ""$configfile" is not present in the location...hence exit"
