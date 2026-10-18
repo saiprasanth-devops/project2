@@ -26,7 +26,7 @@ statuscode=$(echo $?)
 echo "$statuscode"
 if [ "$statuscode" -eq 0 ];
 then 
-echo "status code is "${statuscode}" ....proceed"   
+echo "status code is "${statuscode}" ....proceed"    
 else
 echo "status code is "${statuscode}"....exit"
 exit 1
@@ -38,11 +38,11 @@ if [ "$user_id" -eq 0 ];
 then 
 validate_status
 else
-echo "user "${user_id}" and please execute with root access"
+echo "user "${user_id}" and please execute with root access"  >> "$logfilefullname"
 fi
-cd "${foldername}"
+cd "${foldername}"  >> "$logfilefullname"
 validate_status
-touch "$filename"
+touch "$filename"  >> "$logfilefullname"
 validate_status
 echo "$MONGO_SERVICEFILE" >> ""${foldername}""${filename}""
 validate_status
@@ -70,17 +70,17 @@ validate_status
 
 # dnf search "$packagename" | grep "No matches found."
 
-systemctl enable "$packagename"
+systemctl enable "$packagename"   >> "$logfilefullname"
 validate_status
-systemctl start "$packagename"
+systemctl start "$packagename"    >> "$logfilefullname"
 validate_status
-systemctl status "$packagename"
+systemctl status "$packagename"    >> "$logfilefullname"
 validate_status
 change_address
 validate_status
-systemctl restart "$packagename"
+systemctl restart "$packagename"  >> "$logfilefullname"
 validate_status
-netstat -lntp | grep 27017
+netstat -lntp | grep 27017   >> "$logfilefullname"
 validate_status  
 }
 
@@ -91,9 +91,9 @@ mongod --version
 versionstatuscode=$(echo $?)
 if [ "$versionstatuscode" -ne 0 ];
 then
-echo ""$packagename" is not installed so proceed"
+echo ""$packagename" is not installed so proceed"   >> "$logfilefullname"
 else
-echo ""$packagename" is  installed so please exit"
+echo ""$packagename" is  installed so please exit"   >> "$logfilefullname"
 exit 1
 fi
 }
@@ -109,14 +109,14 @@ echo ""$packagename""
 validate_status
 if [ "$packagename" = "mongodb-org" ];
 then
-checkversion "$packagename"
-mongodb_setup "$packagename"
+checkversion "$packagename"   >> "$logfilefullname"
+mongodb_setup "$packagename"   >> "$logfilefullname"
 # elif [ "$packagename" = "redis:7" ]
 # do
 # redis
 # else 
 else
-echo ""$packagename" is not equal to the given list we need to install"
+echo ""$packagename" is not equal to the given list we need to install"  >> "$logfilefullname"
 exit 1
 fi
 done
