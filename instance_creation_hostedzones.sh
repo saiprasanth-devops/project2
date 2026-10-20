@@ -25,7 +25,7 @@ instance_id=$(aws ec2 run-instances \
 
  echo "exit for the above statement $?"
 
-if [ $? -eq 0 ]:
+if [ "$?" -eq 0 ]:
 then 
  if [ instance_id = "frontend" ]; 
  then 
@@ -47,7 +47,7 @@ fi
 fi
 
 aws route53 change-resource-record-sets \
-  --hosted-zone-id "$hosted_zone_id" \
+  --hosted-zone-id "${hosted_zone_id}" \
   --change-batch '{
     "Comment": "'"$COMMENT"'",
     "Changes": [
@@ -55,8 +55,8 @@ aws route53 change-resource-record-sets \
         "Action": "UPSERT",
         "ResourceRecordSet": {
                "Name": "'$route53'",
-          "Type": "A",
-          "TTL": "1",
+          "Type": "'"A"'",
+          "TTL": '1',
           "ResourceRecords": [
             {
                  "ResourceRecords": [{"Value": "'$IP'"}]
