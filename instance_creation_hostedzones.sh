@@ -57,11 +57,11 @@ aws route53 change-resource-record-sets \
                "Name": "'$route53'",
           "Type": "A",
           "TTL": '1',
-          "ResourceRecords": [
-            {
+      
+            
                  "ResourceRecords": [{"Value": "'$IP'"}]
-            }
-          ]
+            
+          
         }
       }
     ]
