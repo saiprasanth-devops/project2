@@ -46,26 +46,23 @@ route53="${record_name}"
 fi
 fi
 
-aws route53 change-resource-record-sets \
-  --hosted-zone-id "${hosted_zone_id}" \
-  --change-batch '{
-    "Comment": "'"$COMMENT"'",
-    "Changes": [
-      {
-        "Action": "UPSERT",
-        "ResourceRecordSet": {
-               "Name": "'$route53'",
-          "Type": "A",
-          "TTL": '1',
-      
-            
-                 "ResourceRecords": [{"Value": "'$IP'"}]
-            
-          
-        }
-      }
-    ]
-  }'
+   # update R53 record
+    echo "Record: ${route53}"
+    aws route53 change-resource-record-sets \
+    --hosted-zone-id $hosted_zone_id \
+    --change-batch '{
+        "Changes": [
+            {
+                "Action": "UPSERT",
+                "ResourceRecordSet": {
+                    "Name": "'$route53'",
+                    "Type": "A",
+                    "TTL": 1,
+                    "ResourceRecords": [{"Value": "'$IP'"}]
+                }
+            }
+        ]
+    }'
 
 
 echo "instance name : "${instance}" and ip address of it : "${IP}""
