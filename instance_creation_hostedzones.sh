@@ -18,7 +18,7 @@ instance_id=$(aws ec2 run-instances \
     --instance-type "$instance_type" \
     --security-group-ids "$security_group_ids"  \
 	--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value="${instance}"}]" \
-    --query 'Reservations[*].Instances[*].InstanceId' \
+    --query 'Instances[0].InstanceId' \
     --output text)
 
 
