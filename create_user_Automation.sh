@@ -8,4 +8,4 @@ aws ec2 run-instances \
     --security-group-ids sg-0728a52b520d47322  \
 	--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value="${instancename}"}]"
 
-echo "what is the exit code $? and the "${instancename}"
+echo "what is the exit code $? and the "${instancename}""
