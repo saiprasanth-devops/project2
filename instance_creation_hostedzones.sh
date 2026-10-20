@@ -9,7 +9,7 @@ security_group_ids="sg-02a3f89bd2dcb78b1"
 hosted_zone_id="Z063293532TA5U290WZK9"
 record_name="godeploy.online"
 
-
+#this will create the instance and update the route53 record with the private ip address/public ip addressof the instance created
 for instance in $@
 do
 echo "passed values are "${instance}""
