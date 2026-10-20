@@ -27,7 +27,7 @@ instance_id=$(aws ec2 run-instances \
 
 if [ "$?" -eq 0 ];
 then 
- if [ "$instance" = "frontend" ]; 
+ if [ "$instance" != "frontend" ]; 
  then 
 IP=$(aws ec2 describe-instances  \
 --instance-ids "${instance_id}" \
