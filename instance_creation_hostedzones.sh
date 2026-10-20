@@ -23,11 +23,11 @@ instance_id=$(aws ec2 run-instances \
 
 
 
- echo "exit for the above statement $?"
+ #echo "exit for the above statement $?"
 
 if [ "$?" -eq 0 ];
 then 
- if [ "$instance_id" = "frontend" ]; 
+ if [ "$instance" = "frontend" ]; 
  then 
 IP=$(aws ec2 describe-instances  \
 --instance-ids "${instance_id}" \
@@ -55,7 +55,7 @@ aws route53 change-resource-record-sets \
         "Action": "UPSERT",
         "ResourceRecordSet": {
                "Name": "'$route53'",
-          "Type": "'"A"'",
+          "Type": "A",
           "TTL": '1',
           "ResourceRecords": [
             {
