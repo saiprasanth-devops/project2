@@ -27,7 +27,7 @@ instance_id=$(aws ec2 run-instances \
 
 if [ $? -eq 0 ]:
 then 
- if [ instance_id = "roboshop-frontend" ]; 
+ if [ instance_id = "frontend" ]; 
  then 
 IP=$(aws ec2 describe-instances  \
 --instance-ids "${instance_id}" \
