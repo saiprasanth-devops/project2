@@ -46,6 +46,12 @@ route53="${record_name}"
 fi
 fi
 
+if [ "$?" -ne 0 ];
+then
+echo "instance creation failed for "${instance}""
+exit 1
+elif [ "$?" -eq 0 ];
+then 
    # update R53 record
     echo "Record: ${route53}"
     aws route53 change-resource-record-sets \
@@ -64,7 +70,7 @@ fi
         ]
     }'
 
-
+fi
 echo "instance name : "${instance}" and ip address of it : "${IP}""
 done
 
