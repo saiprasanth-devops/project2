@@ -69,9 +69,8 @@ then
             }
         ]
     }'
-
-fi
 echo "instance name : "${instance}" and ip address of it : "${IP}""
+fi
 done
 
 
