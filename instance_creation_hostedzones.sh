@@ -31,7 +31,7 @@ then
  then 
 IP=$(aws ec2 describe-instances  \
 --instance-ids "${instance_id}" \
---query 'Reservations[*].Instances[*].PublicIpAddress'  \
+--query 'Reservations[].Instances[].PublicIpAddress'  \
 --output text)
 
 route53="${instance}"."${record_name}"
@@ -39,7 +39,7 @@ route53="${instance}"."${record_name}"
 else
 IP=$(aws ec2 describe-instances  \
 --instance-ids "${instance_id}" \
---query 'Reservations[*].Instances[*].PrivateIpAddress'  \
+--query 'Reservations[].Instances[].PrivateIpAddress'  \
 --output text)
 route53="${record_name}"
 
