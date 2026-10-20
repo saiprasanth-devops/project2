@@ -25,7 +25,7 @@ instance_id=$(aws ec2 run-instances \
 
  echo "exit for the above statement $?"
 
-if [ "$?" -eq 0 ]:
+if [ "$?" -eq 0 ];
 then 
  if [ instance_id = "frontend" ]; 
  then 
