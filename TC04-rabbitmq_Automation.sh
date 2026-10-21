@@ -88,6 +88,25 @@ validate $? "systemctl status rabbitmq-server"
 
 
 
+#now we need t0 create the 
+rabbitmqctl add_user roboshop roboshop123     &>>  "$logfullpath"
+if [ "$?" -eq 0 ];
+then 
+    rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+
+else 
+echo "user is already present so skipped"    &>> "$logfullpath"
+fi
+
+systemctl restart rabbitmq-server     &>> "$logfullpath"
+validate $? "systemctl restart rabbitmq-server"
+
+systemctl status rabbitmq-server        | tee -a  "$logfullpath"
+validate $? "systemctl status rabbitmq-server"
+
+
+
+
 
 
 
