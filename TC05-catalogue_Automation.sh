@@ -92,6 +92,7 @@ rm -rf /app
 validate $? "remove the files in the /app folder"
 mkdir -p /app
 validate $? "create the app folder in the /"
+cd /app
 unzip /tmp/catalogue.zip
 validate $? "and unzip it"
 
