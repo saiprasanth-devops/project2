@@ -18,6 +18,7 @@ touch "$logfullpath"
 echo ""$logfolder""    &>> "$logfullpath" 
 echo ""$logfile""    &>> "$logfullpath"
 echo ""$logfullpath""  &>> "$logfullpath"
+echo ""$logfullpath""  | tee -a  "$logfullpath"
 
 
 
