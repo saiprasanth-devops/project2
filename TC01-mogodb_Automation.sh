@@ -25,9 +25,10 @@ validate(){
     status_check=$1
     if [ "$status_check" -eq 0 ];
     then 
-    echo "$(date) "${2}" --------- success : PASS "     
+    echo "$(date) "${2}" --------- success : PASS "   &>> "$logfullpath"    
+  
     else
-    echo "$(date) "${2}" --------- Failed : Failed "
+    echo "$(date) "${2}" --------- Failed : Failed "   &>> "$logfullpath" 
     fi
 }
 
@@ -35,7 +36,7 @@ validate(){
 if [ "$user_id" -eq 0 ];
 then
 echo "user is sudo user"
-validate $? "user is sudo user"
+validate $? "user is sudo user"      
 else
 echo "please proceed with sudo user"
 exit 1
