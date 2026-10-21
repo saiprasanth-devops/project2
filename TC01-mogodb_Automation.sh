@@ -14,7 +14,7 @@ logfolder="/var/log/roboshop"
 logfile=$0
 mkdir -p "$logfolder"
 logfullpath=""${logfolder}"/"${logfile}".log"
-touch "$logfullpath"   &>> "$logfullpath"   
+touch "$logfullpath"  
 echo ""$logfolder""    &>> "$logfullpath" 
 echo ""$logfile""    &>> "$logfullpath"
 echo ""$logfullpath""  &>> "$logfullpath"
