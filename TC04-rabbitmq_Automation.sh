@@ -45,7 +45,7 @@ fi
 
 
 modulevalidate(){
-     mosulestatus=$1
+     modulestatus=$1
 
      if [ "$modulestatus" -eq 0 ];
      then 
@@ -80,11 +80,11 @@ validate $? "dnf install rabbitmq-server -y"
 systemctl enable rabbitmq-server     &>> "$logfullpath"
 validate $? "systemctl enable rabbitmq-server"
 
-systemCtl start rabbitmq-server        &>> "$logfullpath"
-validate $? "systemtl start rabbitmq-server"
+systemctl start rabbitmq-server        &>> "$logfullpath"
+validate $? "systemctl start rabbitmq-server"
 
-systemCtl status rabbitmq-server        &>> "$logfullpath"
-validate $? "systemtl status rabbitmq-server"
+systemctl status rabbitmq-server        &>> "$logfullpath"
+validate $? "systemctl status rabbitmq-server"
 
 
 
