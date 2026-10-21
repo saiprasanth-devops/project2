@@ -12,7 +12,7 @@
 user_id=$(id -u)
 logfolder="/var/log/roboshop"
 logfile=$0
-logpullpath=""${logfolder}"/""${logfile}".log"
+logpullpath=""${logfolder}"/"${logfile}".log"
 echo ""$logfolder""
 echo ""$logfile".sh"
 echo ""$logpullpath""
