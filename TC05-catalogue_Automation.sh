@@ -52,26 +52,26 @@ modulevalidate(){
 
 }
 
-dnf list nodejs -y
+dnf list nodejs -y    &>> "$logfullpath" 
 modulevalidate $? "dnf list nodejs -y"
 
-dnf list available nodejs -y
+dnf list available nodejs -y     &>> "$logfullpath" 
 modulevalidate $? "dnf list available nodejs -y"
 
-modulelist=$(dnf module list nodejs -y)
-echo ""$modulelist" check we have 24 version"
+modulelist=$(dnf module list nodejs -y)     &>> "$logfullpath" 
+echo ""$modulelist" check we have 24 version"    &>> "$logfullpath" 
 modulevalidate $? "dnf module list nodejs -y"
-
-dnf module disable nodejs -y
+ 
+dnf module disable nodejs -y                &>> "$logfullpath" 
 modulevalidate $? "dnf module disable nodejs -y"
 
-dnf module enable nodejs:24 -y
+dnf module enable nodejs:24 -y              &>> "$logfullpath" 
 modulevalidate $? "dnf module enable nodejs:24 -y"
 
-dnf install nodejs -y
+dnf install nodejs -y              &>> "$logfullpath" 
 validate $? "dnf install nodejs -y"
 
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop    &>> "$logfullpath" 
 validate $? "system user has been created"
 
 mkdir -p /app
@@ -80,16 +80,16 @@ validate $? "create the app folder in the /"
 curl -L -o /tmp/catalogue.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
 validate $? "download the folder into the /tmp folder"
 
-cd /app
+cd /app       &>> "$logfullpath" 
 validate $? "go to app folder"
 unzip /app/catalogue.zip
 validate $? "and unzip it"
 
-npm install
+npm install               &>> "$logfullpath" 
 validate $? "npm should be installed"
 
 package=$(ls -l)
-echo "$package"
+echo "$package"        &>> "$logfullpath" 
 
 if [[ "$package" == *"package.json"* ]];
 then
@@ -99,8 +99,9 @@ echo "doesnot have the depenedency json"
 exit 1
 fi
 
-cp catalogueservicefile /etc/systemd/system/catalogue.service
-validate $? "npm should be installed"
+cd /home/ec2-user/cartservice2/project2
+cp catalogueservicefile /etc/systemd/system/catalogue.service            &>> "$logfullpath" 
+validate $? "npm should be installed"              &>> "$logfullpath" 
 
 
 
