@@ -71,8 +71,14 @@ modulevalidate $? "dnf module enable nodejs:24 -y"
 dnf install nodejs -y              &>> "$logfullpath" 
 validate $? "dnf install nodejs -y"
 
+roboshopid=$(id roboshop)
+if [ "$?" -eq 0 ];
+then
 useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop    &>> "$logfullpath" 
-validate $? "system user has been created"
+else
+echo "user is already present and skipping him to create"
+fi
+#validate $? "system user has been created"
 
 mkdir -p /app
 validate $? "create the app folder in the /"
@@ -101,7 +107,9 @@ fi
 
 cd /home/ec2-user/cartservice2/project2
 cp catalogueservicefile /etc/systemd/system/catalogue.service            &>> "$logfullpath" 
-validate $? "npm should be installed"              &>> "$logfullpath" 
+validate $? "npm should be installed"              &>> "$logfullpath"
+
+
 
 
 
