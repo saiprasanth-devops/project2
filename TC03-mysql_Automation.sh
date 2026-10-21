@@ -53,7 +53,9 @@ systemctl start mysqld    &>> "$logfullpath"
 validate $? "systemctl start mysqld"
 passwordset=$(mysql_secure_installation --set-root-pass RoboShop@1)
 echo ""$passwordset""
-if [ "$passwordset" == *"Password already set"* ];
+#for the text contains we need to use [[==]]
+
+if [[ "$passwordset" == *"Password already set"* ]];
 then 
 echo "password is already set "    &>> "$logfullpath"
 elif [ "$?" -eq 0 ];
