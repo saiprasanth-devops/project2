@@ -25,9 +25,9 @@ validate(){
     status_check=$1
     if [ "$status_check" -eq 0 ];
     then 
-    echo ""${2}" --------- successfully : PASS "
+    echo ""${2}" --------- success : PASS "
     else
-    echo ""${2}" --------- successfully : Failed "
+    echo ""${2}" --------- Failed : Failed "
     fi
 }
 
