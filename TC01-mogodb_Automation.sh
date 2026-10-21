@@ -15,7 +15,7 @@ logfile=$0
 mkdir -p "$logfolder"
 logfullpath=""${logfolder}"/"${logfile}".log"
 touch "$logfullpath"
-echo "starting the execution run"         &>> "$logfullpath"  
+echo "------------------starting the execution run-----------------------------"         &>> "$logfullpath"  
 echo ""$logfolder""    &>> "$logfullpath" 
 echo ""$logfile""    &>> "$logfullpath"
 echo ""$logfullpath""  &>> "$logfullpath"
