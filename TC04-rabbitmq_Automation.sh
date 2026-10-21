@@ -80,10 +80,10 @@ validate $? "dnf install rabbitmq-server -y"
 systemctl enable rabbitmq-server     &>> "$logfullpath"
 validate $? "systemctl enable rabbitmq-server"
 
-systemctl start rabbitmq-server        &>> "$logfullpath"
+systemctl start rabbitmq-server        | tee -a  "$logfullpath"
 validate $? "systemctl start rabbitmq-server"
 
-systemctl status rabbitmq-server        &>> "$logfullpath"
+systemctl status rabbitmq-server        | tee -a  "$logfullpath"
 validate $? "systemctl status rabbitmq-server"
 
 
