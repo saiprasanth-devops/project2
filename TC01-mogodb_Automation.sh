@@ -25,10 +25,10 @@ validate(){
     status_check=$1
     if [ "$status_check" -eq 0 ];
     then 
-    echo "$(date) "${2}" --------- success : PASS "   &>> "$logfullpath"    
+    echo "$(date) [INFO] "${2}" --------- success : PASS "   &>> "$logfullpath"    
   
     else
-    echo "$(date) "${2}" --------- Failed : Failed "   &>> "$logfullpath" 
+    echo "$(date) [INFO] "${2}" --------- Failed : Failed "   &>> "$logfullpath" 
     fi
 }
 
