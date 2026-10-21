@@ -25,7 +25,7 @@ validate(){
     status_check=$1
     if [ "$status_check" -eq 0 ];
     then 
-    echo "$(date) [INFO] "${2}" --------- success : PASS "   &>> "$logfullpath"    
+    echo "$(date) [INFO] "${2}" --------- success : PASS "   dnf install mongodb-org -y
   
     else
     echo "$(date) [INFO] "${2}" --------- Failed : Failed "   &>> "$logfullpath" 
@@ -41,6 +41,27 @@ else
 echo "please proceed with sudo user"
 exit 1
 fi
+
+#Set up the MongoDB repo file:
+cp mogodb /etc/yum.repos.d/mongo.repo       
+validate $? "Copy the repo file to yum repos"
+dnf install mongodb-org -y    &>> "$logfullpath" 
+validate $? "install the monogdb-org with directly y"
+systemctl enable mongod      &>> "$logfullpath" 
+validate $? "enable the mongod"
+systemctl start mongod       &>> "$logfullpath" 
+validate $? "start the mongod"        &>> "$logfullpath" 
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf    
+validate $? "change the port from 127 to 0.0.0.0"        &>> "$logfullpath" 
+systemctl restart mongod
+validate $? "restart the mongod"        &>> "$logfullpath"
+systemctl status mongod 
+validate $? "status check for the mongod"        &>> "$logfullpath"
+
+
+
+
+
 
 
 
