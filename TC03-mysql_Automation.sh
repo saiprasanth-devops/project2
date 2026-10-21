@@ -51,6 +51,20 @@ systemctl enable mysqld    &>> "$logfullpath"
 validate $? "systemctl enable mysqld"
 systemctl start mysqld    &>> "$logfullpath" 
 validate $? "systemctl start mysqld"
+passwordset=$(mysql_secure_installation --set-root-pass RoboShop@1)
+
+if [ "$passwordset" = *"Password already set"* ];
+then 
+echo "password is already set "    &>> "$logfullpath"
+elif [ "$?" -eq 0 ];
+then 
+echo "password is setnow username is root"    &>> "$logfullpath"
+else
+echo "error"
+exit 1
+fi
+systemctl restart mysqld
+validate $? "systemctl restart the  mysqld"
 
 
 
