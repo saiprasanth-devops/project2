@@ -109,6 +109,8 @@ cd /home/ec2-user/cartservice2/project2
 cp catalogueservicefile /etc/systemd/system/catalogue.service            &>> "$logfullpath" 
 validate $? "npm should be installed"              &>> "$logfullpath"
 
+systemctl status catalogue  | tee -a "$logfullpath" 
+
 
 
 
