@@ -20,6 +20,36 @@ echo ""$logfile""    &>> "$logfullpath"
 echo ""$logfullpath""  &>> "$logfullpath"
 echo ""$logfullpath""  | tee -a  "$logfullpath"
 
+if [ "$user_id" -eq 0 ];
+then
+eho "user is sudo user"
+validate $? "user is sudo user"
+else
+echo "please proceed with sudo user"
+exit 1
+fi
+
+
+
+validate(){
+
+    status_check=$1
+    if [ "$status_check" -eq 0 ];
+    then 
+    echo ""${2}" --------- successfully : PASS "
+    else
+    echo ""${2}" --------- successfully : Failed "
+    fi
+}
+
+
+
+
+
+
+
+
+
 
 
 
