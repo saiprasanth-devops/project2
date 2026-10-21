@@ -15,9 +15,9 @@ logfile=$0
 mkdir -p "$logfolder"
 logfullpath=""${logfolder}"/"${logfile}".log"
 touch "$logfullpath"  
-echo ""$logfolder""    > "$logfullpath" 
-echo ""$logfile""    > "$logfullpath"
-echo ""$logfullpath""  > "$logfullpath"
+echo ""$logfolder""    &>> "$logfullpath" 
+echo ""$logfile""    &>> "$logfullpath"
+echo ""$logfullpath""  &>> "$logfullpath"
 echo ""$logfullpath""  | tee -a  "$logfullpath"
 
 
