@@ -18,5 +18,7 @@ do
         --output text
     )
 
+    echo "$?"
+
     echo "$instance ID: "$instance_id""
 done
