@@ -52,7 +52,7 @@ validate $? "systemctl enable mysqld"
 systemctl start mysqld    &>> "$logfullpath" 
 validate $? "systemctl start mysqld"
 passwordset=$(mysql_secure_installation --set-root-pass RoboShop@1)
-
+echo ""$passwordset""
 if [ "$passwordset" = *"Password already set"* ];
 then 
 echo "password is already set "    &>> "$logfullpath"
