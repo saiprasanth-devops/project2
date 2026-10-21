@@ -51,7 +51,6 @@ systemctl enable mysqld    &>> "$logfullpath"
 validate $? "systemctl enable mysqld"
 systemctl start mysqld    &>> "$logfullpath" 
 validate $? "systemctl start mysqld"
-"
 
 
 
