@@ -8,7 +8,7 @@
 # create the systemctl and post them to logs
 
 
-
+echo "starting the execution run"         &>> "$logfullpath"
 user_id=$(id -u)
 logfolder="/var/log/roboshop"
 logfile=$0
