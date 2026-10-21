@@ -12,7 +12,8 @@
 user_id=$(id -u)
 logfolder="/var/log/roboshop"
 logfile=$0
-logfullpath=""${logfolder}"/"${logfile}".log"   &>> "$logfullpath"
+logfullpath=""${logfolder}"/"${logfile}".log"
+touch "$logfullpath"   &>> "$logfullpath"   
 echo ""$logfolder""    &>> "$logfullpath" 
 echo ""$logfile""    &>> "$logfullpath"
 echo ""$logfullpath""  &>> "$logfullpath"
