@@ -60,14 +60,14 @@ modulevalidate(){
 #rabbitmq
 cp rabbitmq /etc/yum.repos.d/rabbitmq.repo
 validate $? "repo has been added to the repo file"
-dnf list erlang          &>> "$logfullpath"
+dnf list erlang -y        &>> "$logfullpath"
 modulevalidate $? "dnf list erlang"
-dnf list rabbitmq-server  &>> "$logfullpath"
+dnf list rabbitmq-server -y &>> "$logfullpath"
 modulevalidate $? "dnf list rabbitmq-server"
-dnf module list erlang   &>> "$logfullpath"
+dnf module list erlang -y   &>> "$logfullpath"
 modulevalidate $? "dnf module list erlang"
 
-dnf module list rannitmq-server &>> "$logfullpath"
+dnf module list rannitmq-server -y &>> "$logfullpath"
 
 modulevalidate $? "dnf module list rannitmq-server"
 
