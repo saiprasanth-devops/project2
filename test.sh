@@ -7,13 +7,13 @@ hosted_zone_id="Z09842261W8MW372F9VFX"
 
 for instance in $@
 do
-    echo "creating instance: $instance"
+    echo "creating instance: ${instance}"
 
     instance_id=$(aws ec2 run-instances \
         --image-id "$ami_id" \
         --instance-type "$instance_type" \
         --security-groups "roboshop-common"  \
-        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-"${instance}"}]" \
+        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value="roboshop-"${instance}""}]" \
         --query 'Instances[0].InstanceId' \
         --output text
     )
@@ -25,3 +25,15 @@ done
 
 
        # --security-groups "roboshop-common" "roboshop-"${instance}"" \
+
+
+# for instance in $@
+# do
+# echo "passed values are "${instance}""
+# instance_id=$(aws ec2 run-instances \
+#     --image-id "$image_id" \
+#     --instance-type "$instance_type" \
+#     --security-group-ids "$security_group_ids"  \
+# 	--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value="${instance}"}]" \
+#     --query 'Instances[0].InstanceId' \
+#     --output text)
