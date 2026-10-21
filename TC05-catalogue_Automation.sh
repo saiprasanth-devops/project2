@@ -116,6 +116,10 @@ validate $? "npm should be installed"              &>> "$logfullpath"
 
 systemctl status catalogue  | tee -a "$logfullpath" 
 
+systemctl daemon-reload   | tee - a "$logfullpath" 
+systemctl enable catalogue    | tee - a "$logfullpath" 
+systemctl start catalogue    | tee - a "$logfullpath" 
+
 
 
 
