@@ -14,7 +14,7 @@ logfolder="/var/log/roboshop"
 logfile=$0
 logpullpath=""${logfolder}"/"${logfile}".log"
 echo ""$logfolder""
-echo ""$logfile".sh"
+echo ""$logfile""
 echo ""$logpullpath""
 
 
