@@ -25,7 +25,7 @@ validate(){
     status_check=$1
     if [ "$status_check" -eq 0 ];
     then 
-    echo "$(date) [INFO] "${2}" --------- success : PASS "   dnf install mongodb-org -y
+    echo "$(date) [INFO] "${2}" --------- success : PASS "   &>> "$logfullpath" 
   
     else
     echo "$(date) [INFO] "${2}" --------- Failed : Failed "   &>> "$logfullpath" 
