@@ -52,6 +52,7 @@ systemctl enable mongod      &>> "$logfullpath"
 validate $? "enable the mongod"
 systemctl start mongod       &>> "$logfullpath" 
 validate $? "start the mongod"        &>> "$logfullpath" 
+# sed will not look whether the 127 is present or not in the second run if the command execute it is 0
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf    
 validate $? "change the port from 127 to 0.0.0.0"        &>> "$logfullpath" 
 systemctl restart mongod
