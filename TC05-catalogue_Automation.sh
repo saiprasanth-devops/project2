@@ -88,6 +88,8 @@ validate $? "download the folder into the /tmp folder"
 
 cd /app       &>> "$logfullpath" 
 validate $? "go to app folder"
+rm -rf /app
+validate $? "remove the files in the /app folder"
 unzip /tmp/catalogue.zip
 validate $? "and unzip it"
 
