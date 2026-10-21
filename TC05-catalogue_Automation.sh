@@ -88,7 +88,7 @@ validate $? "download the folder into the /tmp folder"
 
 cd /app       &>> "$logfullpath" 
 validate $? "go to app folder"
-unzip /app/catalogue.zip
+unzip /tmp/catalogue.zip
 validate $? "and unzip it"
 
 npm install               &>> "$logfullpath" 
