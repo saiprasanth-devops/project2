@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+startingstep(){
 user_id=$(id -u)
 logfolder="/var/log/roboshop"
 logfile=$0
@@ -35,3 +35,4 @@ echo "please proceed with sudo user"
 exit 1
 fi
 
+}
